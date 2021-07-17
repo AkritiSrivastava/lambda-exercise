@@ -1,0 +1,23 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "This template creates a Lambda function that fetches key value pair from Parameter Store and stores that in S3 ",
+    "Resources": {	
+        "LambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "FunctionName": "exercise-lambda",
+                
+                "Code": {
+					"ZipFile": {
+								"S3Bucket" : "akriti-personal",
+								"S3Key" : "exercise-lambda.zip"
+					}			
+                },
+                "Description": "Used to run job",
+                "Handler": "exercise-lambda.lambda_handler",
+				"Role": "arn:aws:iam::104099536117:role/lambdaS3SSM",
+                "Runtime": "python3.8"
+            }
+        }
+  }
+}
